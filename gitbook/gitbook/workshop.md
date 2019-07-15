@@ -8,5 +8,7 @@ As someone who learns and teaches Kubernetes on a daily basis, having access to 
 
 In this hypothetical world, I am considering mastering Kubernetes as a 4 week task. In the first week you have done your typical 101 stuff. You know what most of the primitives are \(pod, deployment, service\). You have deployed your first example application \(or maybe your application that you containerized\). Kubernetes is still for the most part a mystery. 
 
+What I found that there was a lot of training material for the 101 stuff. There were also a lot for advanced material although those were really focused on very specific problems. What I thought would be great if we had some training material around some lesser known Kubernetes primitive as well as some knobs and buttons in Kubernetes that is crucial for leveling up your K8s game.
+
 
 
