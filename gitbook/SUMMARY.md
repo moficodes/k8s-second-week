@@ -1,4 +1,4 @@
 # Table of contents
 
-* [Initial page](gitbook/workshop.md)
+* [Kubernetes the Second Week](gitbook/workshop.md)
 
