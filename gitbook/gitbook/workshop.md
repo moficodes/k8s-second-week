@@ -10,5 +10,13 @@ In this hypothetical world, I am considering mastering Kubernetes as a 4 week ta
 
 What I found that there was a lot of training material for the 101 stuff. There were also a lot for advanced material although those were really focused on very specific problems. What I thought would be great if we had some training material around some lesser known Kubernetes primitive as well as some knobs and buttons in Kubernetes that is crucial for leveling up your K8s game.
 
+## Agenda
+
+1. Level set on week one of K8s.
+2. Topics Covered
+3. Examples
+4. Q/A
+5. What for week three?
+
 
 
