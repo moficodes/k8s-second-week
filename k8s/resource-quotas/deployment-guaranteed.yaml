@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  resource-quotas-guaranteed
+  labels:
+    name: guaranteed
+spec:
+  selector:
+    matchLabels:
+      name: guaranteed-pod
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: guaranteed-pod
+    spec:
+      containers:
+      - image:  nginx
+        name:  nginx
+        imagePullPolicy: Always
+        resources:
+          limits:
+            memory: "200Mi"
+            cpu: "500m"
+          requests:
+            memory: "200Mi"
+            cpu: "500m"
+      restartPolicy: Always

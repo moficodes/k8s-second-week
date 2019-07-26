@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  resource-quotas-be
+  labels:
+    name: best-effort
+spec:
+  selector:
+    matchLabels:
+      name: best-effort-pod
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: best-effort-pod
+    spec:
+      containers:
+      - image:  nginx
+        name:  nginx
+        imagePullPolicy: Always
+      restartPolicy: Always
