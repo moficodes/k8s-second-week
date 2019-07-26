@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  sigterm-rouge
+  labels:
+    name:  signal-deploy
+spec:
+  selector:
+    matchLabels:
+      name: signal-pod
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name:  signal-pod
+    spec:
+      containers:
+      - image:  moficodes/os-signal:vROUGE
+        name:  os-signal
+        imagePullPolicy: Always
+      restartPolicy: Always
