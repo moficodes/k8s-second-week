@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  lifecycle
+  labels:
+    name:  lifecycle-deploy
+spec:
+  selector:
+    matchLabels:
+      name: lifecycle-pod
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name:  lifecycle-pod
+    spec:
+      containers:
+      - image:  moficodes/lifecycle:v0.0.2
+        name: lifecycle
+        env:
+        - name: WAIT_FOR_POST_START
+          value: "true"
+        imagePullPolicy: Always
+        lifecycle:
+          postStart:
+            exec:
+              command:
+              - sh
+              - -c
+              - sleep 30 && echo "Wake up!" > /tmp/poststart
+          preStop:
+              httpGet:
+                port: 8080
+                path: shutdown
+        resources:
+          limits:
+            memory: "200Mi"
+            cpu: "300m"
+          requests: 
+            memory: "200Mi"
+            cpu: "300m"
+      restartPolicy: Always

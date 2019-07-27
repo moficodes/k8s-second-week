@@ -9,7 +9,6 @@ import (
 )
 
 func main() {
-	waitForPostStart()
 	http.HandleFunc("/", home)
 	http.HandleFunc("/shutdown", shutdown)
 	http.ListenAndServe(":8080", nil)
