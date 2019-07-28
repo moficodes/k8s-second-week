@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-selector-deployment
+spec:
+  selector:
+    matchLabels: 
+      name: node-selector-pod
+  template:
+    metadata:
+      labels:
+        name: node-selector-pod
+    spec:
+      containers:
+      - image: moficodes/lifecycle:v0.0.1
+        name: lifecycle
+      nodeSelector:
+        gpu: available
+      restartPolicy: Always
+

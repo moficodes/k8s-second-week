@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-affinity-deployment
+spec:
+  selector:
+    matchLabels: 
+      name: node-affinity-pod
+  template:
+    metadata:
+      labels:
+        name: node-affinity-pod
+    spec:
+      containers:
+      - image: moficodes/lifecycle:v0.0.1
+        name: lifecycle
+        resources:
+          limits:
+            memory: "300Mi"
+            cpu: "200m"
+          requests:
+            memory: "300Mi"
+            cpu: "200m"
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: nodetype
+                  operator: In
+                  values: 
+                    - "dev"
+                    - "test"
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - preference:
+                matchExpressions:
+                  - key: numCores
+                    operator: Gt
+                    values: 
+                      - "3"
+              weight: 1
+            - preference:
+                matchExpressions:
+                  - key: location
+                    operator: In
+                    values: 
+                      - "us-east"
+                      - "us-south"
+              weight: 5
+      restartPolicy: Always
+
