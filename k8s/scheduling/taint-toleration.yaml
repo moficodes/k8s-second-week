@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  taints-toleration
+  labels:
+    name:  taints-toleration-deploy
+spec:
+  selector:
+    matchLabels:
+      name: taints-toleration-pod
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: taints-toleration-pod
+    spec:
+      containers:
+      - image:  moficodes/os-signal:v0.0.1
+        name:  os-signal
+        imagePullPolicy: Always
+      # tolerations:
+      #   - key: "special"
+      #     operator: "Equal"
+      #     value: "true"
+      #     effect: "NoSchedule"
+      restartPolicy: Always
