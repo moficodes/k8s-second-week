@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name:  job-sleep
+spec:
+  completions: 10
+  # parallelism: 2
+  # activeDeadlineSeconds: 10
+  template:
+    metadata:
+      name:  sleep
+    spec:
+      containers:
+        - image: busybox
+          name: resting
+          command: ["/bin/sleep"]
+          args:
+            - "3"
+      restartPolicy: OnFailure
