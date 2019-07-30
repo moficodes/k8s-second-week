@@ -15,7 +15,7 @@ spec:
         name:  signal-pod
     spec:
       containers:
-      - image:  moficodes/os-signal:v0.0.1
+      - image:  moficodes/os-signal:v0.0.2
         name:  os-signal
         imagePullPolicy: Always
       restartPolicy: Always

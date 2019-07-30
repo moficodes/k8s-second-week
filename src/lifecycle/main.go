@@ -9,8 +9,10 @@ import (
 )
 
 func main() {
+	waitForPostStart()
 	http.HandleFunc("/", home)
 	http.HandleFunc("/shutdown", shutdown)
+	log.Println("starting application in por 8080")
 	http.ListenAndServe(":8080", nil)
 }
 
@@ -32,9 +34,9 @@ func shutdown(w http.ResponseWriter, r *http.Request) {
 
 func waitForPostStart() {
 	wait := os.Getenv("WAIT_FOR_POST_START")
-	fmt.Println(wait)
 	for wait == "true" {
 		if _, err := os.Stat("/tmp/poststart"); err == nil {
+			log.Println("file created. starting application.")
 			return
 		} else if os.IsNotExist(err) {
 			log.Println("file creation has not completed yet...")

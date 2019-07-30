@@ -1,10 +1,11 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 )
 
 func main() {
@@ -13,13 +14,16 @@ func main() {
 	signal.Notify(c, os.Interrupt, syscall.SIGTERM)
 
 	go func() {
-		sig := <-c
-		fmt.Println(sig)
-		fmt.Println("Doing all sorts of cleanup work!")
+		<-c
+		log.Println("Doing all sorts of cleanup work!")
+		time.Sleep(10 * time.Second)
 		done <- true
+		// uncomment to get to the rouge version
+		// log.Println("going rouge")
+		// log.Println("i am invincible")
 	}()
 
-	fmt.Println("awaiting signal")
+	log.Println("awaiting signal")
 	<-done
-	fmt.Println("exiting")
+	log.Println("exiting")
 }
