@@ -1,2 +1,4 @@
 # Init Containers
 
+Now we are getting into some advanced kubernetes stuff. Back in lifecycle we talked a bit about `poststart` and `prestop` methods. If I didn't mention at that time, I will say it again. poststart is not a reliable way to make things happen before our cluster runs, because poststart has no guarantee of completion before the actual container running. For times you need that kind of a setup, you want to use something like an init container. Init container run before any other container in the pod and the other containers are only started at init container completion. In that sense init containers are a lot like jobs.Say you have an application that requires a database to be present. You can write an init container that will make sure the database is present and exit on confirmation. Now the rest of your application can start normally.
+
