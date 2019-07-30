@@ -1,0 +1,17 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name:  cron-job-sleep
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - image: busybox
+              name: resting
+              command: ["/bin/sleep"]
+              args:
+                - "3"
+          restartPolicy: OnFailure
