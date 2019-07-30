@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  init-container-deploy
+  labels:
+    app: init-container-deploy
+spec:
+  selector:
+    matchLabels:
+      app: init-container
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: init-container
+    spec:
+      initContainers:
+      - name: poll
+        image: axeclbr/git
+        volumeMounts:
+        - mountPath: /var/lib/data
+          name: git
+        command:
+        - "git"
+        - "clone" 
+        - "https://github.com/moficodes/kubernete-second-week-web"
+        - "/var/lib/data"
+      containers:
+      - name: app
+        image: centos/httpd
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /var/www/html
+          name: git
+      volumes:
+      - emptyDir: {}
+        name: git

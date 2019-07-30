@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  sidecar
+spec:
+  selector:
+    app: sidecar
+  type:  LoadBalancer
+  ports:
+  - name:  http
+    port:  80
+    protocol: TCP
+    targetPort:  80

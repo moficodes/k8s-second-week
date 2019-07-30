@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  sidecar-deploy
+  labels:
+    app: sidecar-deploy
+spec:
+  selector:
+    matchLabels:
+      app: sidecar
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sidecar
+    spec:
+      containers:
+      - name: app
+        image: centos/httpd
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        volumeMounts:
+        - mountPath: "/var/www/html"
+          name: git
+        resources:
+          limits:
+            memory: "100Mi"
+            cpu: "300m"
+          requests:
+            memory: "100Mi"
+      - name: poll
+        image: axeclbr/git
+        volumeMounts:
+        - mountPath: /var/lib/data
+          name: git
+        env:
+        - name: GIT_REPO
+          value: https://github.com/moficodes/kubernete-second-week-web
+        command:
+        - "sh"
+        - "-c"
+        - "git clone $(GIT_REPO) . && watch -n 60 git pull"
+        workingDir: /var/lib/data
+        resources:
+          limits:
+            memory: "100Mi"
+            cpu: "300m"
+          requests:
+            memory: "100Mi"
+      volumes:
+      - emptyDir: {}
+        name: git
