@@ -18,5 +18,9 @@ What I found that there was a lot of training material for the 101 stuff. There 
 4. Q/A
 5. What for week three?
 
+## $whoami
 
+My name is Mofizur Rahman \(Mofi\), developer advocate at IBM. Focusing on container and microservices tech stack. I write some go code and collect stickers. 
+
+Find me on almost everywhere @moficodes \(twitter, medium, youtube, twitch etc\)
 
