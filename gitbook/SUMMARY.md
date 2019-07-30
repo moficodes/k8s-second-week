@@ -11,8 +11,8 @@
   * [Daemonsets](workshop/daemonsets.md)
   * [Init Containers](workshop/init-containers.md)
   * [Sidecar](workshop/sidecar.md)
-  * [ConfigMaps](workshop/configmaps.md)
-  * [Secrets](workshop/secrets.md)
-  * [Private Docker Registry](workshop/private-docker-registry.md)
+  * [ConfigMaps \(soon\)](workshop/configmaps.md)
+  * [Secrets \(soon\)](workshop/secrets.md)
+  * [Private Docker Registry \(soon\)](workshop/private-docker-registry.md)
 * [Whats Next](whats-next.md)
 
