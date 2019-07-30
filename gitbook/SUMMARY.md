@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Kubernetes the Second Week](gitbook/workshop.md)
+* [Setup](setup.md)
 * [Workshop](workshop/README.md)
   * [Resource Quotas](workshop/resource-quotas.md)
   * [Kubernetes Lifecycle](workshop/kubernetes-lifecycle.md)
