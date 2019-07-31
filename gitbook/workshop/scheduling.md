@@ -132,7 +132,57 @@ Also after a pod get scheduled even if we change the label on the node nothing w
 
 ### Pod Affinity and Anti Affinity
 
+In kubernetes for most cases we don't care about where the application runs. But there are some performance benefit to having certain pods run close to some other pods. For example if you have 3 nodes in 3 location and you have an application with 3 pods if all those pod run in the same node you basically get no benefit by having a node close to your user. In a case like this you want your pod to be spread out. There is also the case when you have an application that uses some other application heavily \(like a datastore or cache\) having them close to one another helps increase performance.
 
+Lets see an example of this. 
+
+We have 3 nodes and 3 replicas of our pod. We also have 3 replicas of the redis cache.
+
+Just like nodeAffinity pod affinity and anti affinity is also either required or the preferred. If its required it wont schedule until the condition is met. If its preferred, it will schedule but will try first to schedule to the node with highest weight.
+
+Lets look at the affinity rule for the web-store found in `k8s/scheduling/pod-affinity-web-server.yaml`
+
+```text
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - web-store
+            topologyKey: "kubernetes.io/hostname"
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - store
+            topologyKey: "kubernetes.io/hostname"
+```
+
+The anti affinity requires to scheduler to schedule the pod away from any pod with label `values: web-store` which happens to be the label of the web-store pod itself.
+
+It also has affinity towards pods with label `values: store` and won't get scheduled until pods with said label is available. That is the label we are choosing for our redis-cache. That means our pod won't schedule unless there is also a redis-cache available.
+
+Lets see this in action
+
+```text
+kubectl apply -f k8s/scheduling/pod-affinity-web-server.yaml
+```
+
+If we check with `kubectl get po` we will see the pods are pending.
+
+Lets run the redis cache 
+
+```text
+kubectl apply -f k8s/scheduling/pod-affinity-redis-cache.yaml
+```
+
+And with that we will see the our web-server pods also get to running.
 
 ### Taints and Tolerations
 
@@ -154,5 +204,7 @@ Taints:             special=true:NoSchedule
 Taints:             special=true:NoSchedule
 ```
 
-If we 
+If we want to still schedule something in these nodes we can use something called toleration. A toleration is a way to tell the scheduler that my pod tolerates the taint on this node. 
+
+
 
