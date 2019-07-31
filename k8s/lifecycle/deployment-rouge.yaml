@@ -7,12 +7,12 @@ metadata:
 spec:
   selector:
     matchLabels:
-      name: signal-pod
+      name: rouge-pod
   replicas: 1
   template:
     metadata:
       labels:
-        name:  signal-pod
+        name:  rouge-pod
     spec:
       containers:
       - image:  moficodes/os-signal:vROUGE
