@@ -8,5 +8,9 @@ Almost all major cloud provider and some image registry provider including docke
 
 We will use ICR or IBM Container Registry that comes built in with your IBM Cloud account.
 
+## Building a Image and Pushing to ICR
+
+
+
 
 
