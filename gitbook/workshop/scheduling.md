@@ -2,6 +2,12 @@
 
 At the heart of it, Kubernetes is a scheduler. But how does scheduling work? The scheduler will try to put things in the "right" place to the best of its abilities but sometimes we need a bit of extra control. 
 
+## How Does the Scheduler Work?
+
+Kubernetes scheduler is an amazing piece of software. And to explain how it works it will take way too long and I don't think I am even remotely qualified to do the explanation any justice.
+
+Instead You can read [this article](https://medium.com/@dominik.tornow/the-kubernetes-scheduler-cd429abac02f)
+
 ### Node Selector:
 
 Using labels specified on the node 

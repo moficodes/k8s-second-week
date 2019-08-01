@@ -24,3 +24,5 @@ My name is Mofizur Rahman \(Mofi\), developer advocate at IBM. Focusing on conta
 
 Find me on almost everywhere @moficodes \(twitter, medium, youtube, twitch etc\)
 
+All my social links are also on top of every page.
+
