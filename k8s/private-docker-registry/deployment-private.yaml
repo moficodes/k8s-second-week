@@ -12,10 +12,12 @@ spec:
   template:
     metadata:
       labels:
-        name:  private-pod
+        name: private-pod
     spec:
       containers:
       - image:  us.icr.io/<YOUR-NAMESPACE>/os-signal:0.0.1
         name:  os-signal
         imagePullPolicy: Always
+      # imagePullSecrets:
+      #   - name: private-docker-secret
       restartPolicy: Always
