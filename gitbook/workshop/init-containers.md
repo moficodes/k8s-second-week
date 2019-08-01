@@ -8,6 +8,8 @@ Lets try to setup a website for our workshop.
 
 [This Git Repo](https://github.com/moficodes/kubernete-second-week-web) holds the frontend code.
 
+> _**I am not UI designer \(I don't have the patience not the skill\). If you have some time, feel free to improve the look. PRs welcome.**_
+
 If you want to test it out yourself fork it. 
 
 Lets run the deployment.
