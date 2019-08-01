@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name:  sigterm-rouge
+  name:  private
   labels:
-    name:  signal-deploy
+    name:  private-deploy
 spec:
   selector:
     matchLabels:
-      name: rouge-pod
+      name: private-pod
   replicas: 1
   template:
     metadata:
       labels:
-        name:  rouge-pod
+        name:  private-pod
     spec:
       containers:
-      - image:  moficodes/os-signal:vROUGE-1
+      - image:  us.icr.io/<YOUR-NAMESPACE>/os-signal:0.0.1
         name:  os-signal
         imagePullPolicy: Always
       restartPolicy: Always
