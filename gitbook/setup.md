@@ -8,7 +8,11 @@
 
 Once you have you account all set up, it's time to get access to a kubernetes cluster. 
 
-Lab Key: **`kube201!`**
+Lab Key: 
+
+```text
+kube201!
+```
 
 [Grant Cluster](https://kube201.mybluemix.net)
 
