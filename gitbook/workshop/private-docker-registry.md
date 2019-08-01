@@ -192,3 +192,88 @@ kubectl create secret docker-registry private-docker-secret \
 --docker-email="a@b.com"
 ```
 
+Check the secret was crated
+
+```text
+kubectl get secrets
+```
+
+We should see our secret there
+
+```text
+NAME                    TYPE                                  DATA   AGE
+default-au-icr-io       kubernetes.io/dockerconfigjson        1      9h
+default-de-icr-io       kubernetes.io/dockerconfigjson        1      9h
+default-icr-io          kubernetes.io/dockerconfigjson        1      9h
+default-jp-icr-io       kubernetes.io/dockerconfigjson        1      9h
+default-token-5tdlr     kubernetes.io/service-account-token   3      9h
+default-uk-icr-io       kubernetes.io/dockerconfigjson        1      9h
+default-us-icr-io       kubernetes.io/dockerconfigjson        1      9h
+kube201-workshop01      Opaque                                2      9h
+private-docker-secret   kubernetes.io/dockerconfigjson        1      9m26s
+```
+
+Secrets in. Lets try the deployment again.
+
+```text
+kubectl get po
+```
+
+`imagePullBackOff` again. Why?
+
+So we created a secret but we didn't tell our pod to use it.
+
+In the deployment yaml we have this 2 commented out lines
+
+```text
+      containers:
+      - image:  us.icr.io/<YOUR-NAMESPACE>/os-signal:0.0.1
+        name:  os-signal
+        imagePullPolicy: Always
+      # imagePullSecrets:
+      #   - name: private-docker-secret
+```
+
+Lets use nano or vi to uncomment them
+
+```text
+nano k8s/private-docker-registry/deployment-private.yaml
+```
+
+> imagePullSecrets needs to be at the same level as containers key. Basically delete two characters.
+
+Lets try this one last time. 🤞🏼
+
+```text
+ kubectl apply -f k8s/private-docker-registry/deployment-private.yaml
+```
+
+After a moment we should get the pod is running.
+
+```text
+kubectl get po
+```
+
+We know all about what this pod does. But if you want to test its still the same thing. \(You should always test, _**Trust but Verify**_\)
+
+```text
+kubectl logs -f -l name=private-pod
+```
+
+```text
+2019/08/01 07:10:32 awaiting signal
+```
+
+If we send a delete command
+
+```text
+kubectl delete po -l name=private-pod
+```
+
+```text
+2019/08/01 07:13:11 Doing all sorts of cleanup work!
+2019/08/01 07:13:21 exiting
+```
+
+So we can verify the app is working fine. 😎
+
