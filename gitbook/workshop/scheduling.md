@@ -210,5 +210,47 @@ Taints:             special=true:NoSchedule
 
 If we want to still schedule something in these nodes we can use something called toleration. A toleration is a way to tell the scheduler that my pod tolerates the taint on this node. 
 
+Lets try deploying something
+
+```text
+kubectl apply -f k8s/scheduling/taint-toleration.yaml
+```
+
+If we check the status we will see the pod is pending.
+
+```text
+kubectl get po
+```
+
+Its because we have the toleration commented out.
+
+Lets fix that
+
+```text
+nano k8s/scheduling/taint-toleration.yaml
+```
+
+Uncomment these 5 line
+
+```text
+      containers:
+      - image:  moficodes/os-signal:v0.0.1
+        name:  os-signal
+        imagePullPolicy: Always
+      # tolerations:
+      #   - key: "special"
+      #     operator: "Equal"
+      #     value: "true"
+      #     effect: "NoSchedule"
+```
+
+If we apply this new change we will see the deployment succeed.
+
+Lets clean this taint
+
+```text
+kubectl taint nodes -l arch=amd64 special-
+```
+
 
 
