@@ -17,7 +17,7 @@ schedule: "*/1 * * * *"
 Run
 
 ```text
-kubectl k8s/cron-jobs/cronjob.yaml
+kubectl apply -f k8s/cron-jobs/cronjob.yaml
 ```
 
 If you run

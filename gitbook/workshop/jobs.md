@@ -20,7 +20,7 @@ A job is complete when the underlying container exits.
 To run the example we have 
 
 ```text
-kubectl k8s/jobs/jobs.yaml
+kubectl apply -f k8s/jobs/jobs.yaml
 ```
 
 The job basically runs the `busybox` image and sleeps for 3 second for 10 completion sequentially.
@@ -44,7 +44,7 @@ kubectl delete jobs job-sleep
 Rerun the job
 
 ```text
-kubectl k8s/jobs/jobs.yaml
+kubectl apply -f k8s/jobs/jobs.yaml
 ```
 
 This time we should see jobs running 2 at a time.
