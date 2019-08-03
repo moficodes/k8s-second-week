@@ -10,6 +10,7 @@ spec:
     metadata:
       labels:
         name: fluentd # Pod template's label selector
+    spec:
       containers:
       - name: fluentd
         image: gcr.io/google-containers/fluentd-elasticsearch:1.20

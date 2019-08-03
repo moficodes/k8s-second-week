@@ -18,9 +18,9 @@ spec:
       - image:  moficodes/os-signal:v0.0.1
         name:  os-signal
         imagePullPolicy: Always
-      # tolerations:
-      #   - key: "special"
-      #     operator: "Equal"
-      #     value: "true"
-      #     effect: "NoSchedule"
+      tolerations:
+        - key: "special"
+          operator: "Equal"
+          value: "true"
+          effect: "NoSchedule"
       restartPolicy: Always
