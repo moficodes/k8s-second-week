@@ -2,7 +2,7 @@
 
 ## Get Started
 
-[Click this link to get started](https://cloud.ibm.com/registration?cm_mmc=Email_Events-_-Developer_Innovation-_-WW_WW-_-advocates:mofizur-rahman\title:midatlanticdevelopersconference-maryland-812019-822019\eventid:5d165eac09329b5504d429e7\date:Aug2019\type:workshop\team:global-devadvgrp-newyork\city:maryland\country:unitedstates\contents:kubernetes-101-labs&cm_mmca1=000019RS&cm_mmca2=10004805&cm_mmca3=M99938765&eventid=5d165eac09329b5504d429e7&cvosrc=email.Events.M99938765&cvo_campaign=000019RS)
+Click this link to get started
 
 ## Get Access to Kubernetes Cluster
 
@@ -11,10 +11,10 @@ Once you have you account all set up, it's time to get access to a kubernetes cl
 Lab Key: 
 
 ```text
-kube201!
+<new-key>
 ```
 
-[Grant Cluster](https://kube201.mybluemix.net)
+Grant Cluster
 
 ![](.gitbook/assets/image%20%281%29.png)
 
