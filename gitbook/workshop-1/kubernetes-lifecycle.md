@@ -11,7 +11,7 @@ There are two hooks that are exposed to containers
 
 #### PostStart
 
-This hook executes right after the container is created. It doesn't however guarantee execution before container ENTRYPOINT. This does not take any parameter.
+This hook executes right after the container is created. It doesn't however guarantee execution before container `ENTRYPOINT`. This does not take any parameter.
 
 #### PreStop
 
