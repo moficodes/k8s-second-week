@@ -2,47 +2,35 @@
 
 ## Get Started
 
-Click this link to get started
+[Click this link to get started](https://ibm.biz/BdzbVY)
 
 ## Get Access to Kubernetes Cluster
 
 Once you have you account all set up, it's time to get access to a kubernetes cluster. 
 
-Lab Key: 
+**Lab Key**
 
 ```text
-<new-key>
+ikslab
 ```
 
-Grant Cluster
+**Grant Cluster**
 
-![](.gitbook/assets/image%20%281%29.png)
+[Click Here](https://devopsdayscmh19.mybluemix.net)
+
+![](.gitbook/assets/image%20%284%29.png)
 
 Use the lab key and your IBMid, click agree and submit. This will do some iam magic and connect a 3 node cluster with your account.
 
 ## Get Cloud Shell
 
-[Get Access to Cloud Shell](https://cloudshell-pyrk8s-ba.us-south.cf.cloud.ibm.com/)
+[Get Access to Cloud Shell](https://workshop.shell.cloud.ibm.com)
 
-If it asks for a password use : **`PyRk8sBA`** 
+If it asks for a password use : **`ikslab`** 
 
 ![](.gitbook/assets/screen-shot-2019-07-30-at-10.21.55-am.png)
 
 > **Select IBM from the dropdown.**
-
-_Cloud shell is a tmux based shell._ 
-
-_Quick note on tmux_
-
-```text
-Ctrl+b " — split pane horizontally.
-Ctrl+b % — split pane vertically.
-Ctrl+b arrow key — switch pane.
-Hold Ctrl+b, don't release it and hold one of the arrow keys — resize pane.
-Ctrl+b c — (c)reate a new window.
-Ctrl+b n — move to the (n)ext window.
-Ctrl+b p — move to the (p)revious window.
-```
 
 ## Login to IBM Cloud
 
@@ -71,7 +59,7 @@ Now lets setup `kubectl` to work with that cluster.
 Run
 
 ```text
-ibmcloud ks cluster-config <your-cluster-name>
+ibmcloud ks cluster config --cluster <your-cluster-name>
 ```
 
 This will print out the `export KUBECONFIG=<string>`
