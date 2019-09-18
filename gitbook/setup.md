@@ -4,6 +4,13 @@
 
 [Click this link to get started](https://ibm.biz/BdzbVY)
 
+> Because Cloud sign up for IBM does not require a credit card. It's kind of hard to stop spam accounts. If too many people try to sign up from the same IP the whitelist will stop it.
+>
+> Ways to go around it:
+>
+> 1. Use your phone network \(or phone as hotspot\)
+> 2. Use a VPN to change your IP
+
 ## Get Access to Kubernetes Cluster
 
 Once you have you account all set up, it's time to get access to a kubernetes cluster. 
@@ -42,7 +49,7 @@ ibmcloud account list
 
 This should return 2 results.
 
-If it says not logged in login using `ibmcloud login` and choose the ibm account when prompted.
+If it says not logged in login using `ibmcloud login --sso` and choose the ibm account when prompted.
 
 ## Get Kubectl Access to Cluster
 
